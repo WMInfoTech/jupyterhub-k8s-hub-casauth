@@ -1,14 +1,23 @@
 ---
+prePuller:
+  enabled: false
+rbac:
+  enabled: false
 hub:
-  image: wmit/jupyterhub-k8s-hub-casauth
-  tag: v0.5.0
+  image:
+    name: wmit/jupyterhub-k8s-hub-casauth
+    tag: v0.5.0
 proxy:
   secretToken: "It's a secret!"
 auth:
   type: custom
   custom:
-    class-name: jhub_cas_authenticator.cas_auth.CASAuthenticator
+    className: jhub_cas_authenticator.cas_auth.CASAuthenticator
     config:
       cas_login_url: https://cas.example.edu/cas/login
       cas_service_url: https://jupyterhub.example.edu/login
       cas_service_validate_url: https://cas.example.edu/cas/p3/serviceValidate
+  admin:
+    users:
+      - user1
+      - user2
