@@ -7,6 +7,8 @@ hub:
   image:
     name: wmit/jupyterhub-k8s-hub-casauth
     tag: v0.5.0
+  extraConfig: |
+    import jhub_cas_authenticator.cas_auth
 proxy:
   secretToken: "It's a secret!"
 auth:
@@ -16,7 +18,8 @@ auth:
     config:
       cas_login_url: https://cas.example.edu/cas/login
       cas_service_url: https://jupyterhub.example.edu/login
-      cas_service_validate_url: https://cas.example.edu/cas/p3/serviceValidate
+      cas_service_validate_url: https://cas.example.edu/cas/p3/serviceValidate # Requires CAS 5
+      # cas_service_validate_url: https://cas.example.edu/cas/serviceValidate # Works on CAS 3
   admin:
     users:
       - user1
