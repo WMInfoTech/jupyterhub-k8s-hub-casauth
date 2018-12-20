@@ -1,4 +1,4 @@
-FROM jupyterhub/k8s-hub:v0.6
+FROM jupyterhub/k8s-hub:0.7.0
 
 USER root
 RUN pip3 install wheel lxml && \
